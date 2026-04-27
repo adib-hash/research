@@ -1,0 +1,14 @@
+# Build artifacts and deps
+node_modules/
+dist/
+.DS_Store
+*.log
+.vercel/
+
+# Exclude unrelated research artifacts and personal chat transcripts
+gemini-conversation-*.md
+ai-capex-site.jsx
+ai-value-chain-final.jsx
+AMDInventoryAnalysis.jsx
+NvidiaInventoryAnalysis.jsx
+ge-aerospace-final.jsx
