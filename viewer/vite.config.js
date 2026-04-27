@@ -6,15 +6,13 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const nm = (pkg) => path.resolve(__dirname, "node_modules", pkg);
 
-// The deployed URL is adib.ihsan.build/research, so all assets are
-// served under /research/. We also write the build into dist/research/
-// so Vercel (serving viewer/dist as the static root) finds files at
-// the matching path.
+// Deployed via Vercel rewrite as adib.ihsan.build/research/aetheria.
+// Build output mirrors the URL path so assets resolve cleanly.
 export default defineConfig({
   plugins: [react()],
-  base: "/research/",
+  base: "/research/aetheria/",
   build: {
-    outDir: "dist/research",
+    outDir: "dist/research/aetheria",
     emptyOutDir: true,
   },
   resolve: {
@@ -30,11 +28,7 @@ export default defineConfig({
     port: 5173,
     strictPort: false,
     open: false,
-    fs: {
-      allow: [path.resolve(__dirname, ".."), path.resolve(__dirname)],
-    },
+    fs: { allow: [path.resolve(__dirname, ".."), path.resolve(__dirname)] },
   },
-  optimizeDeps: {
-    include: ["react", "react-dom", "recharts"],
-  },
+  optimizeDeps: { include: ["react", "react-dom", "recharts"] },
 });
